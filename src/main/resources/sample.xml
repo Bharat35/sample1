@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <element>
+      <Email>john@gmail.com</Email>
+      <FirstName>John</FirstName>
+      <LastName>Smith</LastName>
+   </element>
+   <element>
+      <Email>bob@gmail.com</Email>
+      <FirstName>Bob</FirstName>
+      <LastName>Stryf</LastName>
+   </element>
+</root>
