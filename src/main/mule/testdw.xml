@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="5c181610-3b53-4e7d-b1b4-06673b4d3f12" >
+		<http:request-connection host="localhost" port="8033" />
+	</http:request-config>
+	<flow name="testdwFlow" doc:id="af6efed8-f53f-4e8a-abf8-0c3d23639cc0" >
+		<http:listener doc:name="Listener" doc:id="16949e9a-113d-472e-abcc-f0e959e5dec4" path="/test" config-ref="HTTP_Listener_config1"/>
+		<http:request method="GET" doc:name="Request" doc:id="95be9663-1ca0-4be2-8063-d98236ba27d7" config-ref="HTTP_Request_configuration" path="/test2">
+			<http:response-validator >
+				<http:success-status-code-validator values="400..499" />
+			</http:response-validator>
+		</http:request>
+		<set-payload value='#["usha"]' doc:name="Set Payload" doc:id="66fcd2a9-9a3e-4dbb-898b-36db027c66f3" />
+	</flow>
+	<flow name="testdwFlow1" doc:id="c635085c-bbf2-483e-a823-96ce138f3eb8" >
+		<http:listener doc:name="Listener" doc:id="d87467f0-dd37-4395-a2b0-f130e854a7f0" config-ref="HTTP_Listener_config1" path="/test1"/>
+		<set-payload value='#["jyothi"]' doc:name="Set Payload" doc:id="0c244cf5-356c-4483-a285-1d3a8a20621a" />
+	</flow>
+</mule>
